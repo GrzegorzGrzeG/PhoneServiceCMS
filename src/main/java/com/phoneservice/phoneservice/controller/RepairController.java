@@ -1,33 +1,44 @@
 package com.phoneservice.phoneservice.controller;
 
+import com.phoneservice.phoneservice.entity.Phone;
 import com.phoneservice.phoneservice.entity.Repair;
+import com.phoneservice.phoneservice.service.PhoneService;
 import com.phoneservice.phoneservice.service.RepairService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/repair")
 public class RepairController {
 
     private final RepairService repairService;
+    private final PhoneService phoneService;
 
-    public RepairController(RepairService repairService) {
+    public RepairController(RepairService repairService, PhoneService phoneService) {
         this.repairService = repairService;
+        this.phoneService = phoneService;
     }
 
     @GetMapping("/new")
     public String newForm(Model model) {
-        model.addAttribute("newRepair", new Repair());
+        Repair repair = new Repair();
+        model.addAttribute("newRepair", repair);
+        List<Phone> phones = phoneService.getAll();
+        model.addAttribute("phones", phones);
         return "/html/new_repair";
     }
     @PostMapping("/new")
-    public String processNewForm(Repair repair) {
+    @ResponseBody
+    public String processNewForm(@ModelAttribute("newRepair") Repair repair) {
+        Long phoneId = repair.getPhoneId();
+        Phone phone = phoneService.getPhoneById(phoneId);
+        repair.setPhone(phone);
         repairService.newRepair(repair);
         //dodać stronę z potwierdzeniem danych naprawy;
-        return "";
+        return "succes";
     }
 
 

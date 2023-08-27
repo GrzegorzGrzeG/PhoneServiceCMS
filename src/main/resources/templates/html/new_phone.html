@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="#" th:action="@{/phone/new}" method="post" th:object="${phone}">
+        <label>Model:</label>
+        <input type="text" th:field="*{model}" /><br />
+        <button type="submit">Add new phone</button>
+    </form>
+</body>
+</html>

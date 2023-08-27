@@ -1,11 +1,24 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<p>Hello World</p>
+
+<form action="#" th:action="@{/repair/new}" method="post" th:object="${newRepair}">
+    <label>Select model:</label>
+    <select th:field="*{phone}">
+        <option th:each="p : ${phones}" th:value="${p.id}" th:text="${p.model}" />
+    </select>
+    <br />
+    <label>Phone IMEI:</label>
+    <input type="text" th:field="*{phoneImei}" /> <br/>
+    <label>Problem:</label>
+    <input type="text" th:field="*{problemDesc}" /> <br/>
+    <button type="submit">Register repair</button>
+</form>
 
 </body>
 </html>

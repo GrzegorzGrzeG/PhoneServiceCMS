@@ -1,6 +1,7 @@
 package com.phoneservice.phoneservice.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,6 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@Data
 @Table(name = "clients")
 public class Client {
     @Id
@@ -20,7 +22,7 @@ public class Client {
     private String password;
     private String email;
 
-    @OneToMany
-    private List<Repair> repair;
+//    @OneToMany
+//    private List<Repair> repair;
 
 }

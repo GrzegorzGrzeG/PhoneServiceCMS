@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
-@Entity
-@Table(name = "technicians")
+//@Entity
+//@Table(name = "technicians")
 public class Technician {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,8 +14,8 @@ public class Technician {
     private String login;
     private String password;
 
-    @OneToMany
-    private List<Repair> repairs;
+//    @OneToMany
+//    private List<Repair> repairs;
 
 
 }
