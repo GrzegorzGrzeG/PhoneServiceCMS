@@ -9,7 +9,7 @@
 
 <form action="#" th:action="@{/repair/new}" method="post" th:object="${newRepair}">
     <label>Select model:</label>
-    <select th:field="*{phone}">
+    <select th:field="*{phoneId}">
         <option th:each="p : ${phones}" th:value="${p.id}" th:text="${p.model}" />
     </select>
     <br />

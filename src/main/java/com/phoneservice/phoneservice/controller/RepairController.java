@@ -38,7 +38,7 @@ public class RepairController {
         repair.setPhone(phone);
         repairService.newRepair(repair);
         //dodać stronę z potwierdzeniem danych naprawy;
-        return "succes";
+        return "succes" + phoneId;
     }
 
 
