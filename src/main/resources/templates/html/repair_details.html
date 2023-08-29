@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Phone</th>
+        <th>Problem</th>
+        <th>IMEI</th>
+        <th>Status</th>
+        <th>Start Repair</th>
+        <th>End Repair</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="repair : ${repair}">
+            <td><p th:text="${repair.phone.model}"></p></td>
+            <td><p th:text="${repair.problemDesc}"></p></td>
+            <td><p th:text="${repair.phoneImei}"></p></td>
+            <td><p th:text="${repair.status}"></p></td>
+            <td><p th:text="${repair.startRepair}"></p></td>
+            <td><p th:text="${repair.endRepair}"></p></td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

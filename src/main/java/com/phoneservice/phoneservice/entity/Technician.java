@@ -1,21 +1,20 @@
 package com.phoneservice.phoneservice.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
-
-//@Entity
-//@Table(name = "technicians")
+@Getter
+@Setter
+@Entity
+@Table(name = "technicians")
 public class Technician {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String login;
     private String password;
-
-//    @OneToMany
-//    private List<Repair> repairs;
 
 
 }

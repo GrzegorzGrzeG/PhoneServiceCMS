@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Phone</th>
+        <th>Problem</th>
+        <th>IMEI</th>
+        <th>Status</th>
+        <th>Start Repair</th>
+        <th>End Repair</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="repairList : ${repairList}">
+            <td><p th:text="${repairList.phone.model}"></p></td>
+            <td><p th:text="${repairList.problemDesc}"></p></td>
+            <td><p th:text="${repairList.phoneImei}"></p></td>
+            <td><p th:text="${repairList.status}"></p></td>
+            <td><p th:text="${repairList.startRepair}"></p></td>
+            <td><p th:text="${repairList.endRepair}"></p></td>
+            <td>
+                <form th:action="@{/tech/repair}" method="post">
+                <button type="submit" name="repairId" th:value="${repairList.id}">Repair</button>
+                </form>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+</body>
+</html>

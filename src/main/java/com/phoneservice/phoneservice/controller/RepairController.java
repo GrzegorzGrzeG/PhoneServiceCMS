@@ -2,6 +2,7 @@ package com.phoneservice.phoneservice.controller;
 
 import com.phoneservice.phoneservice.entity.Phone;
 import com.phoneservice.phoneservice.entity.Repair;
+import com.phoneservice.phoneservice.entity.RepairStatus;
 import com.phoneservice.phoneservice.service.PhoneService;
 import com.phoneservice.phoneservice.service.RepairService;
 import org.springframework.stereotype.Controller;
@@ -36,6 +37,7 @@ public class RepairController {
         Long phoneId = repair.getPhoneId();
         Phone phone = phoneService.getPhoneById(phoneId);
         repair.setPhone(phone);
+        repair.setStatus(RepairStatus.IN_REPAIR);
         repairService.newRepair(repair);
         //dodać stronę z potwierdzeniem danych naprawy;
         return "succes" + phoneId;

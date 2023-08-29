@@ -9,7 +9,7 @@ import lombok.Setter;
 //@Table(name = "parts")
 public class Part {
 //    @Id
-//    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+//    @GeneratedValue(strategy = GenerationType.I)
 //    private Long id;
 //    private String name;
 //    private PartStatus status;
