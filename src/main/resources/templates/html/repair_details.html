@@ -17,15 +17,31 @@
     </tr>
     </thead>
     <tbody>
-        <tr th:each="repair : ${repair}">
-            <td><p th:text="${repair.phone.model}"></p></td>
-            <td><p th:text="${repair.problemDesc}"></p></td>
-            <td><p th:text="${repair.phoneImei}"></p></td>
-            <td><p th:text="${repair.status}"></p></td>
-            <td><p th:text="${repair.startRepair}"></p></td>
-            <td><p th:text="${repair.endRepair}"></p></td>
-        </tr>
+    <tr th:each="repair : ${repair}">
+        <td><p th:text="${repair.phone.model}"></p></td>
+        <td><p th:text="${repair.problemDesc}"></p></td>
+        <td><p th:text="${repair.phoneImei}"></p></td>
+        <td><p th:text="${repair.status}"></p></td>
+        <td><p th:text="${repair.startRepair}"></p></td>
+        <td><p th:text="${repair.endRepair}"></p></td>
+    </tr>
     </tbody>
 </table>
+<form th:action="@{/tech/repair/{id}}" method="post">
+    <button type="submit" name="start" value="start">Start repair</button>
+</form>
+<!--Sprawdznie czy naprawa jest rozpoczęta aby dodać części -->
+<form th:action="@{/tech/repair{id}}" method="post">
+    <table>
+        <tr>
+            <td>
+                <th:block th:each="parts : ${parts}">
+                    <input type="checkbox" th:value="parts.id"/>
+                    <label th:text="${parts.name}"></label>
+                </th:block>
+            </td>
+        </tr>
+    </table>
+</form>
 </body>
 </html>

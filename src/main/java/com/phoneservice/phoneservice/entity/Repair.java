@@ -27,6 +27,7 @@ public class Repair {
     @ManyToOne
     @JoinColumn(name = "phone_id")
     private Phone phone;
-//    @ManyToMany
-//    private List<Part> parts;
+
+    @ManyToMany
+    private List<Part> parts;
 }

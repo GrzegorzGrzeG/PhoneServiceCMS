@@ -1,6 +1,7 @@
 package com.phoneservice.phoneservice.service;
 
 import com.phoneservice.phoneservice.entity.Repair;
+import com.phoneservice.phoneservice.entity.RepairStatus;
 import com.phoneservice.phoneservice.repository.RepairRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
@@ -28,4 +29,12 @@ public class RepairService {
     public List<Repair> getAll() {
          return repairRepository.findAll();
     }
+
+    public void updateStatus(RepairStatus repairStatus) {
+        repairRepository.updateRepair(repairStatus);
+    }
+
+//    public void update(Repair repair) {
+//        repairRepository.updateByStatus(repair);
+//    }
 }

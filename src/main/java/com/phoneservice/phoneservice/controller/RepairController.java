@@ -37,7 +37,7 @@ public class RepairController {
         Long phoneId = repair.getPhoneId();
         Phone phone = phoneService.getPhoneById(phoneId);
         repair.setPhone(phone);
-        repair.setStatus(RepairStatus.IN_REPAIR);
+        repair.setStatus(RepairStatus.REGISTERED);
         repairService.newRepair(repair);
         //dodać stronę z potwierdzeniem danych naprawy;
         return "succes" + phoneId;

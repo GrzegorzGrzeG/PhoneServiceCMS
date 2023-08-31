@@ -31,6 +31,7 @@ public class PhoneController {
     @PostMapping("/new")
     @ResponseBody
     public String processNewPhone(Phone phone) {
+        //sprawdzanie duplikatów lub dodanie nowego formularza uzupełniania zapasów
         phoneService.addNewPhone(phone);
         return "success";
     }
