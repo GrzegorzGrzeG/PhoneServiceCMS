@@ -10,7 +10,6 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Data
 @Table(name = "clients")
 public class Client {
     @Id
@@ -22,7 +21,7 @@ public class Client {
     private String password;
     private String email;
 
-//    @OneToMany
-//    private List<Repair> repair;
+    @OneToMany
+    private List<Repair> repairs;
 
 }

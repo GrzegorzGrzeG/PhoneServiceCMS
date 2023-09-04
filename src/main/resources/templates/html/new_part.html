@@ -6,11 +6,13 @@
     <title>Title</title>
 </head>
 <body>
-<form action="#" th:action="@{/part/new}" method="post" th:object="${part}">
+<form action="#" th:action="@{/admin/part/new}" method="post" th:object="${part}">
     <label>Name:</label>
     <input type="text" th:field="*{name}" /><br />
     <label>Quantity:</label>
     <input type="text" th:field="*{quantity}" /><br />
+    <label>Price:</label>
+    <input type="text" th:field="*{price}" /><br />
     <button type="submit">Add new part</button>
 </form>
 
