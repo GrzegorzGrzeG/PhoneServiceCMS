@@ -19,6 +19,7 @@ public class RepairService {
     }
 
     public void newRepair(Repair repair) {
+        repair.setStatus(RepairStatus.REGISTERED);
         repairRepository.save(repair);
     }
 

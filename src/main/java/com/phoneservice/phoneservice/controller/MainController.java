@@ -1,7 +1,8 @@
 package com.phoneservice.phoneservice.controller;
 
-import com.phoneservice.phoneservice.entity.Client;
-import com.phoneservice.phoneservice.service.ClientService;
+import com.phoneservice.phoneservice.entity.User;
+import com.phoneservice.phoneservice.exception.UserAlreadyExistException;
+import com.phoneservice.phoneservice.service.UserService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/")
 public class MainController {
-    private final ClientService clientService;
+    private final UserService userService;
 
-    public MainController(ClientService clientService) {
-        this.clientService = clientService;
+    public MainController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping("/")
@@ -25,17 +26,19 @@ public class MainController {
 
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
-        model.addAttribute("client", new Client());
+        User user = new User();
+        model.addAttribute("client", user);
         return "/html/register_form";
     }
 
     @PostMapping("/register")
-    public String processRegister(Client client) {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encodedPassword = passwordEncoder.encode(client.getPassword());
-        client.setPassword(encodedPassword);
+    public String processRegister(User user) throws UserAlreadyExistException {
 
-        clientService.newClient(client);
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
+
+        userService.newClient(user);
         return "/html/register_success";
     }
 }

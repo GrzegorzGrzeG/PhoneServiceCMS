@@ -1,0 +1,33 @@
+package com.phoneservice.phoneservice.service;
+
+import com.phoneservice.phoneservice.entity.User;
+import com.phoneservice.phoneservice.entity.UserRole;
+import com.phoneservice.phoneservice.exception.UserAlreadyExistException;
+import com.phoneservice.phoneservice.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService {
+    @Autowired
+    private final UserRepository userRepository;
+
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public void newClient(User user) throws UserAlreadyExistException {
+        if(emailExists(user.getEmail())){
+            throw new UserAlreadyExistException("There is an account with that email address: " + user.getEmail());
+        }
+        user.setUserRole(UserRole.CLIENT);
+        userRepository.save(user);
+
+    }
+
+    public boolean emailExists(String email) {
+        return userRepository.findClientByEmail(email) != null;
+    }
+
+}
