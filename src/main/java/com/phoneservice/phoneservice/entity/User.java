@@ -18,6 +18,8 @@ public class User {
     private String lastName;
     private String password;
     private String email;
+
+    @Enumerated(EnumType.STRING)
     private UserRole userRole;
 
     @OneToMany

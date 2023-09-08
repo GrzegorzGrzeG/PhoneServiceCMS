@@ -15,11 +15,14 @@
     </tr>
     </thead>
     <tbody>
+    <form th:action="@{/admin/part/stock}" method="post">
     <tr th:each="parts : ${parts}">
         <td><p th:text="${parts.name}"/></td>
-        <td><p th:text="${parts.quantity}"/></td>
-        <td><p th:text="${parts.price}"/></td>
+        <td><input type="number" th:value="${parts.quantity}" name="newQuantity"/></td>
+        <td><input type="number" th:value="${parts.price}" name="newPrice"/></td>
+        <td><button type="submit" name="partId" th:value="${parts.id}">Submit</button></td>
     </tr>
+    </form>
     </tbody>
 </table>
 

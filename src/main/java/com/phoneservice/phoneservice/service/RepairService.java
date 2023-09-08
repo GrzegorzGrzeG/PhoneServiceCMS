@@ -31,11 +31,4 @@ public class RepairService {
          return repairRepository.findAll();
     }
 
-    public void updateStatus(RepairStatus repairStatus) {
-        repairRepository.updateRepair(repairStatus);
-    }
-
-//    public void update(Repair repair) {
-//        repairRepository.updateByStatus(repair);
-//    }
 }

@@ -17,7 +17,13 @@ public class PhoneService {
     }
 
     public void addNewPhone(Phone phone) {
-        phoneRepository.save(phone);
+        if(modelExist(phone)) {
+            phoneRepository.save(phone);
+        }
+    }
+
+    public boolean modelExist(Phone phone) {
+        return phoneRepository.findPhoneByModel(phone.getModel()) != null;
     }
 
     public List<Phone> getAll() {

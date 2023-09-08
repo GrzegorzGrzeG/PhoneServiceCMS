@@ -5,7 +5,6 @@ import com.phoneservice.phoneservice.entity.Repair;
 import com.phoneservice.phoneservice.entity.RepairStatus;
 import com.phoneservice.phoneservice.service.PartService;
 import com.phoneservice.phoneservice.service.RepairService;
-import com.phoneservice.phoneservice.service.TechnicianService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,12 +15,11 @@ import java.util.Objects;
 @Controller
 @RequestMapping("/tech")
 public class TechnicianController {
-    private final TechnicianService technicianService;
+//    private final TechnicianService technicianService;
     private final RepairService repairService;
     private final PartService partService;
 
-    public TechnicianController(TechnicianService technicianService, RepairService repairService, PartService partService) {
-        this.technicianService = technicianService;
+    public TechnicianController(RepairService repairService, PartService partService) {
         this.repairService = repairService;
         this.partService = partService;
     }
