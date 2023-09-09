@@ -1,13 +1,16 @@
 package com.phoneservice.phoneservice.entity;
 
-import jakarta.persistence.*;
-import lombok.Data;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import jakarta.persistence.*;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+
 @Getter
 @Setter
 @ToString
@@ -19,9 +22,10 @@ public class Repair {
     private Long id;
     private String phoneImei;
     private String problemDesc;
-    private LocalDateTime startRepair;
+    private LocalDate dateOfRegistration;
     private LocalDateTime endRepair;
     private RepairStatus status;
+    private Double sum;
     @Transient
     private Long phoneId;
     @ManyToOne
@@ -30,4 +34,13 @@ public class Repair {
 
     @ManyToMany
     private List<Part> parts;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @PrePersist
+    public void register() {
+        dateOfRegistration = LocalDate.now();
+    }
 }

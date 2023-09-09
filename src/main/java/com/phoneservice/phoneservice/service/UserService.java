@@ -30,4 +30,8 @@ public class UserService {
         return userRepository.findClientByEmail(email) != null;
     }
 
+    public User findByEmail(String email) {
+        return userRepository.findClientByEmail(email);
+    }
+
 }

@@ -17,7 +17,7 @@ public class PartService {
         this.partRepository = partRepository;
     }
 
-    public void newPart(Part part){
+    public void newPart(Part part) {
         partRepository.save(part);
     }
 
@@ -29,5 +29,10 @@ public class PartService {
     public void updateQuantity(Long id, Integer quantity, Double price) {
         partRepository.updateById(id, quantity, price);
     }
+
+    public Part findById(Long id) {
+        return partRepository.findPartById(id);
+    }
+
 
 }

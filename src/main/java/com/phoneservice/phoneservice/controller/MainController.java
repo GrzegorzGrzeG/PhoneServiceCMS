@@ -9,6 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.security.Principal;
 
 @Controller
 @RequestMapping("/")
@@ -41,4 +44,15 @@ public class MainController {
         userService.newClient(user);
         return "/html/register_success";
     }
+
+    @GetMapping("/my")
+    @ResponseBody
+    public String my(Principal principal) {
+        return principal.getName();
+    }
+
+//    @GetMapping("/login")
+//    public String login() {
+//        return "login";
+//    }
 }

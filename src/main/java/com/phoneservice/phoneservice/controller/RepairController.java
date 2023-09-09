@@ -31,6 +31,7 @@ public class RepairController {
         model.addAttribute("phones", phones);
         return "/html/new_repair";
     }
+
     @PostMapping("/new")
     @ResponseBody
     public String processNewForm(@ModelAttribute("newRepair") Repair repair) {

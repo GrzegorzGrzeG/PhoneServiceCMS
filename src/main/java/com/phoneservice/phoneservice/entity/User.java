@@ -1,9 +1,9 @@
 package com.phoneservice.phoneservice.entity;
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import jakarta.persistence.*;
 import java.util.List;
 
 @Getter
@@ -21,8 +21,5 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
-
-    @OneToMany
-    private List<Repair> repairs;
 
 }

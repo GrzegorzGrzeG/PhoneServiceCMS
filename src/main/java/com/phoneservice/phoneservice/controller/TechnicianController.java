@@ -9,13 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Controller
 @RequestMapping("/tech")
 public class TechnicianController {
-//    private final TechnicianService technicianService;
     private final RepairService repairService;
     private final PartService partService;
 
@@ -49,14 +50,31 @@ public class TechnicianController {
     }
 
     @PostMapping("/repair/{id}")
-    @ResponseBody
-    public String repairDetailsProcess(@RequestParam("start") String start, @ModelAttribute("repair")Repair repair) {
-        if(start.equals("start")){
-            repair.setStatus(RepairStatus.IN_REPAIR);
-//            repairService.update(repair);
-
+    public String repairDetailsProcess(@RequestParam(name = "partId") List<Long> partsId, @RequestParam("repairId") Long id) {
+        Repair repair = repairService.getById(id);
+        List<Part> list = new ArrayList<>();
+        Double sum = .0;
+        for (Long partId: partsId) {
+            Part part = partService.findById(partId);
+            list.add(part);
+            sum += part.getPrice();
+            part.setQuantity(part.getQuantity() - 1);
+            partService.newPart(part);
         }
-        return "succs";
+        repair.setParts(list);
+        repair.setSum(sum);
+        repair.setStatus(RepairStatus.FINISHED);
+        repair.setEndRepair(LocalDate.now().atStartOfDay());
+        repairService.updateRepair(repair);
+        return "redirect:/tech/repair/finished";
+    }
+
+
+    @GetMapping("/repair/finished")
+    public String finished(Model model) {
+        List<Repair> finished = repairService.finished();
+        model.addAttribute("repairList", finished);
+        return "/html/repair_finished";
     }
 
 

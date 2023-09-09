@@ -2,6 +2,7 @@ package com.phoneservice.phoneservice.service;
 
 import com.phoneservice.phoneservice.entity.Repair;
 import com.phoneservice.phoneservice.entity.RepairStatus;
+import com.phoneservice.phoneservice.repository.PartRepository;
 import com.phoneservice.phoneservice.repository.RepairRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
@@ -19,7 +20,11 @@ public class RepairService {
     }
 
     public void newRepair(Repair repair) {
-        repair.setStatus(RepairStatus.REGISTERED);
+        repair.setStatus(RepairStatus.IN_REPAIR);
+        repairRepository.save(repair);
+    }
+
+    public void updateRepair(Repair repair) {
         repairRepository.save(repair);
     }
 
@@ -28,7 +33,20 @@ public class RepairService {
     }
 
     public List<Repair> getAll() {
-         return repairRepository.findAll();
+         return repairRepository.findActiveRepairs();
     }
+
+    public List<Repair> finished(){
+        return repairRepository.findRepairWhereStatusIs2();
+    }
+
+    public Repair getById(Long id) {
+        return repairRepository.findRepairById(id);
+    }
+
+
+//    public Repair getRepairByUserId(Long id){
+//        return repairRepository.findRepairsByUserByUser(id);
+//    }
 
 }
