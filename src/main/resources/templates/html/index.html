@@ -1,13 +1,49 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Main site</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
-<h1>Welcome</h1>
-<h3><a th:href="@{/register}">Register</a> </h3>
-<h3><a th:href="@{/login}">Login</a> </h3>
+<body class="bg-dark">
+<div class="container mt-5">
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="table-responsive border rounded p-3 bg-light">
+                <h3 class="text-center mb-4">User Menu</h3>
+                <table class="table table-bordered">
+                    <tr>
+                        <td><a th:href="@{/register}" class="btn btn-primary btn-block">Register</a></td>
+                    </tr>
+                    <tr>
+                        <td><a th:href="@{/login}" class="btn btn-secondary btn-block">Login</a></td>
+                    </tr>
+                    <tr>
+                        <td><a th:href="@{/repair/new}" class="btn btn-success btn-block">New repair</a></td>
+                    </tr>
+                    <tr>
+                        <td><a th:href="@{/client}" class="btn btn-info btn-block">Repair list for client</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="table-responsive border rounded p-3 bg-light">
+                <h3 class="text-center mb-4">Admin & Tech Menu</h3>
+                <table class="table table-bordered">
+                    <tr>
+                        <td><a th:href="@{/tech/repair}" class="btn btn-warning btn-block">Tech menu</a></td>
+                    </tr>
+                    <tr>
+                        <td><a th:href="@{/admin}" class="btn btn-danger btn-block">Admin</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

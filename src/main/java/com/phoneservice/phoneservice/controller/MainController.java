@@ -48,7 +48,7 @@ public class MainController {
     @GetMapping("/my")
     @ResponseBody
     public String my(Principal principal) {
-        return principal.getName();
+        return principal.toString();
     }
 
 //    @GetMapping("/login")

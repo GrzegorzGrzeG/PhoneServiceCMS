@@ -2,10 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Client menu</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
 </head>
-<body>
-
-
+<body class="bg-dark">
+<table class="table table-striped table-dark">
+    <thead>
+    <tr>
+        <th>Phone</th>
+        <th>Problem</th>
+        <th>IMEI</th>
+        <th>Status</th>
+        <th>Date of registration</th>
+        <th>End repair</th>
+        <th>Repair cost</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="repairList : ${repairList}">
+        <td><p th:text="${repairList.phone.model}"></p></td>
+        <td><p th:text="${repairList.problemDesc}"></p></td>
+        <td><p th:text="${repairList.phoneImei}"></p></td>
+        <td><p th:text="${repairList.status}"></p></td>
+        <td><p th:text="${repairList.dateOfRegistration}"></p></td>
+        <td><p th:text="${repairList.endRepair}"></p></td>
+        <td><p th:text="${repairList.sum}"></p></td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

@@ -1,30 +1,34 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Part Stock</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
 </head>
-<body>
-<table>
-    <thead>
-    <tr>
-        <th>Name:</th>
-        <th>Quantity:</th>
-        <th>Price:</th>
-    </tr>
-    </thead>
-    <tbody>
-    <form th:action="@{/admin/part/stock}" method="post">
-    <tr th:each="parts : ${parts}">
-        <td><p th:text="${parts.name}"/></td>
-        <td><input type="number" th:value="${parts.quantity}" name="newQuantity"/></td>
-        <td><input type="number" th:value="${parts.price}" name="newPrice"/></td>
-        <td><button type="submit" name="partId" th:value="${parts.id}">Submit</button></td>
-    </tr>
-    </form>
-    </tbody>
-</table>
-
+<body class="bg-dark">
+<div class="container mt-5">
+    <table class="table table-striped table-dark">
+        <thead>
+        <tr>
+            <th>Name:</th>
+            <th>Quantity:</th>
+            <th>Price:</th>
+            <th>Action:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <form th:action="@{/admin/part/stock}" method="post">
+            <tr th:each="parts : ${parts}">
+                <td><p th:text="${parts.name}"/></td>
+                <td><input type="number" class="form-control" th:value="${parts.quantity}" name="newQuantity"/></td>
+                <td><input type="number" class="form-control" th:value="${parts.price}" name="newPrice"/></td>
+                <td><button type="submit" class="btn btn-primary" name="partId" th:value="${parts.id}">Submit</button></td>
+            </tr>
+        </form>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

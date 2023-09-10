@@ -3,46 +3,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Repair details</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
-<table>
-    <thead>
-    <tr>
-        <th>Phone</th>
-        <th>Problem</th>
-        <th>IMEI</th>
-        <th>Status</th>
-        <th>Date of registration</th>
-        <th>End Repair</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="repair : ${repair}">
-        <td><p th:text="${repair.phone.model}"></p></td>
-        <td><p th:text="${repair.problemDesc}"></p></td>
-        <td><p th:text="${repair.phoneImei}"></p></td>
-        <td><p th:text="${repair.status}"></p></td>
-        <td><p th:text="${repair.dateOfRegistration}"></p></td>
-        <td><p th:text="${repair.endRepair}"></p></td>
-    </tr>
-    </tbody>
-</table>
-<!--Sprawdznie czy naprawa jest rozpoczęta aby dodać części -->
-<form th:action="@{/tech/repair/{id}}" method="post">
-    <table>
+<body class="bg-dark">
+<div class="container mt-5">
+    <h1 class="text-center">Repair List</h1>
+    <table class="table">
+        <thead class="thead-dark">
         <tr>
-            <td>
-                <th:block th:each="parts : ${parts}">
-                    <input type="checkbox" th:value="${parts.id}" name="partId"/>
-                    <label th:text="${parts.name}"></label>
-                    <label th:text="${parts.price}"></label>
-                    <br />
-                </th:block>
-            </td>
+            <th>Phone</th>
+            <th>Problem</th>
+            <th>IMEI</th>
+            <th>Status</th>
+            <th>Date of registration</th>
+            <th>End Repair</th>
         </tr>
-        <td><button type="submit" name="repairId" th:value="${repair.id}">Finish repair</button> </td>
+        </thead>
+        <tbody>
+        <tr th:each="repair : ${repair}">
+            <td th:text="${repair.phone.model}"></td>
+            <td th:text="${repair.problemDesc}"></td>
+            <td th:text="${repair.phoneImei}"></td>
+            <td th:text="${repair.status}"></td>
+            <td th:text="${repair.dateOfRegistration}"></td>
+            <td th:text="${repair.endRepair}"></td>
+        </tr>
+        </tbody>
     </table>
-</form>
+
+    <form th:action="@{/tech/repair/{id}}" method="post">
+        <table class="table">
+            <tbody>
+            <tr th:each="part : ${parts}">
+                <td>
+                    <input type="checkbox" th:value="${part.id}" name="partId"/>
+                    <label th:text="${part.name}"></label>
+                    <label th:text="${part.price}"></label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit" class="btn btn-primary" name="repairId" th:value="${repair.id}">Finish repair</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
 </body>
 </html>

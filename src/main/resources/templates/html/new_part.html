@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>New Part</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
 </head>
-<body>
-<form action="#" th:action="@{/admin/part/new}" method="post" th:object="${part}">
-    <label>Name:</label>
-    <input type="text" th:field="*{name}" /><br />
-    <label>Quantity:</label>
-    <input type="text" th:field="*{quantity}" /><br />
-    <label>Price:</label>
-    <input type="text" th:field="*{price}" /><br />
-    <button type="submit">Add new part</button>
-</form>
-
+<body class="bg-dark">
+<div class="container mt-5">
+    <form action="#" th:action="@{/admin/part/new}" method="post" th:object="${part}">
+        <div class="form-group">
+            <label for="name" style="color: #fff;">Name:</label>
+            <input type="text" class="form-control" id="name" th:field="*{name}" />
+        </div>
+        <div class="form-group">
+            <label for="quantity" style="color: #fff;">Quantity:</label>
+            <input type="text" class="form-control" id="quantity" th:field="*{quantity}" />
+        </div>
+        <div class="form-group">
+            <label for="price" style="color: #fff;">Price:</label>
+            <input type="text" class="form-control" id="price" th:field="*{price}" />
+        </div>
+        <button type="submit" class="btn btn-primary">Add new part</button>
+    </form>
+</div>
 </body>
 </html>

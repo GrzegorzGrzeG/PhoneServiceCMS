@@ -35,7 +35,7 @@ public class Repair {
     @ManyToMany
     private List<Part> parts;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 

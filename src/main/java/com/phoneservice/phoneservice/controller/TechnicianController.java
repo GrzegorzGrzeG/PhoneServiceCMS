@@ -5,6 +5,7 @@ import com.phoneservice.phoneservice.entity.Repair;
 import com.phoneservice.phoneservice.entity.RepairStatus;
 import com.phoneservice.phoneservice.service.PartService;
 import com.phoneservice.phoneservice.service.RepairService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Controller
+@PreAuthorize("hasRole('TECH')")
 @RequestMapping("/tech")
 public class TechnicianController {
     private final RepairService repairService;
@@ -54,7 +56,7 @@ public class TechnicianController {
         Repair repair = repairService.getById(id);
         List<Part> list = new ArrayList<>();
         Double sum = .0;
-        for (Long partId: partsId) {
+        for (Long partId : partsId) {
             Part part = partService.findById(partId);
             list.add(part);
             sum += part.getPrice();

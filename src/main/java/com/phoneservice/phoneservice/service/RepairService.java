@@ -2,6 +2,7 @@ package com.phoneservice.phoneservice.service;
 
 import com.phoneservice.phoneservice.entity.Repair;
 import com.phoneservice.phoneservice.entity.RepairStatus;
+import com.phoneservice.phoneservice.entity.User;
 import com.phoneservice.phoneservice.repository.PartRepository;
 import com.phoneservice.phoneservice.repository.RepairRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,14 +30,14 @@ public class RepairService {
     }
 
     public Repair repairDetails(Long id) {
-         return repairRepository.findRepairById(id);
+        return repairRepository.findRepairById(id);
     }
 
     public List<Repair> getAll() {
-         return repairRepository.findActiveRepairs();
+        return repairRepository.findActiveRepairs();
     }
 
-    public List<Repair> finished(){
+    public List<Repair> finished() {
         return repairRepository.findRepairWhereStatusIs2();
     }
 
@@ -44,9 +45,13 @@ public class RepairService {
         return repairRepository.findRepairById(id);
     }
 
+    public List<Repair> getByUser(String email) {
+        return repairRepository.findRepairByUser(email);
+    }
 
-//    public Repair getRepairByUserId(Long id){
-//        return repairRepository.findRepairsByUserByUser(id);
-//    }
+    public List<Repair> getByUserObj(User user) {
+        return repairRepository.findRepairByUserObj(user);
+    }
+
 
 }

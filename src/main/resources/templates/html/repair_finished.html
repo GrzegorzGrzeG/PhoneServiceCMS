@@ -2,33 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Repair list</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
-<table>
-    <thead>
-    <tr>
-        <th>Phone</th>
-        <th>Problem</th>
-        <th>IMEI</th>
-        <th>Status</th>
-        <th>Date of registration</th>
-        <th>End repair</th>
-        <th>Repair cost</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="repairList : ${repairList}">
-        <td><p th:text="${repairList.phone.model}"></p></td>
-        <td><p th:text="${repairList.problemDesc}"></p></td>
-        <td><p th:text="${repairList.phoneImei}"></p></td>
-        <td><p th:text="${repairList.status}"></p></td>
-        <td><p th:text="${repairList.dateOfRegistration}"></p></td>
-        <td><p th:text="${repairList.endRepair}"></p></td>
-        <td><p th:text="${repairList.sum}"></p></td>
-    </tr>
-    </tbody>
-</table>
-
+<body class="bg-dark">
+<div class="container mt-5">
+    <h1 class="text-center text-white">Repair List</h1>
+    <table class="table table-striped table-dark">
+        <thead>
+        <tr>
+            <th>Phone</th>
+            <th>Problem</th>
+            <th>IMEI</th>
+            <th>Status</th>
+            <th>Date of registration</th>
+            <th>End repair</th>
+            <th>Repair cost</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="repairList : ${repairList}">
+            <td th:text="${repairList.phone.model}"></td>
+            <td th:text="${repairList.problemDesc}"></td>
+            <td th:text="${repairList.phoneImei}"></td>
+            <td th:text="${repairList.status}"></td>
+            <td th:text="${repairList.dateOfRegistration}"></td>
+            <td th:text="${repairList.endRepair}"></td>
+            <td th:text="${repairList.sum}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
