@@ -39,9 +39,9 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(request -> "/".equals(request.getRequestURI()) || "/register".equals(request.getRequestURI())).permitAll()
-                        .requestMatchers(request -> "/admin".equals(request.getRequestURI())).hasRole("ADMIN")
-                        .requestMatchers(request -> "/client".equals(request.getRequestURI())).hasRole("CLIENT")
-                        .requestMatchers(request -> "/tech".equals(request.getRequestURI())).hasRole("TECH")
+                        .requestMatchers(request -> "/admin/**".equals(request.getRequestURI())).hasRole("ADMIN")
+                        .requestMatchers(request -> "/client/**".equals(request.getRequestURI())).hasRole("CLIENT")
+                        .requestMatchers(request -> "/tech/**".equals(request.getRequestURI())).hasRole("TECH")
                         .anyRequest().authenticated())
                 .formLogin(Customizer.withDefaults())
                 .userDetailsService(customUserDetailsService);

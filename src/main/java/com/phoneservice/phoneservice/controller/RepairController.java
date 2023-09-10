@@ -6,6 +6,7 @@ import com.phoneservice.phoneservice.entity.User;
 import com.phoneservice.phoneservice.service.PhoneService;
 import com.phoneservice.phoneservice.service.RepairService;
 import com.phoneservice.phoneservice.service.UserService;
+import jakarta.annotation.security.RolesAllowed;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +16,7 @@ import java.security.Principal;
 import java.util.List;
 
 @Controller
-@PreAuthorize("hasRole('CLIENT')")
+@RolesAllowed("TECH")
 @RequestMapping("/repair")
 public class RepairController {
 
@@ -41,15 +42,16 @@ public class RepairController {
     @PostMapping("/new")
     public String processNewForm(@ModelAttribute("newRepair") Repair repair, Principal principal) {
         String email = principal.getName();
-
         User user = userService.findByEmail(email);
+
         Long phoneId = repair.getPhoneId();
         Phone phone = phoneService.getPhoneById(phoneId);
+
         repair.setPhone(phone);
         repair.setUser(user);
         repairService.newRepair(repair);
 
-        return "redirect:/client";
+        return "/html/index";
     }
 
 

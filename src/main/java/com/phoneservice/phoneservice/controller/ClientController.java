@@ -4,6 +4,7 @@ import com.phoneservice.phoneservice.entity.Repair;
 import com.phoneservice.phoneservice.entity.User;
 import com.phoneservice.phoneservice.service.RepairService;
 import com.phoneservice.phoneservice.service.UserService;
+import jakarta.annotation.security.RolesAllowed;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +15,7 @@ import java.security.Principal;
 import java.util.List;
 
 @Controller
-@PreAuthorize("hasRole('CLIENT')")
+@RolesAllowed("CLIENT")
 @RequestMapping("/client")
 public class ClientController {
 

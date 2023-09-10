@@ -8,26 +8,26 @@
 </head>
 <body class="bg-dark">
 <div class="container mt-5">
-    <h1 class="text-center">Repair List</h1>
-    <table class="table">
+    <h1 class="text-center text-white">Repair List</h1>
+    <table class="table table-striped">
         <thead class="thead-dark">
         <tr>
-            <th>Phone</th>
-            <th>Problem</th>
-            <th>IMEI</th>
-            <th>Status</th>
-            <th>Date of registration</th>
-            <th>End Repair</th>
+            <th class="text-white">Phone</th>
+            <th class="text-white">Problem</th>
+            <th class="text-white">IMEI</th>
+            <th class="text-white">Status</th>
+            <th class="text-white">Date of registration</th>
+            <th class="text-white">End Repair</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="repair : ${repair}">
-            <td th:text="${repair.phone.model}"></td>
-            <td th:text="${repair.problemDesc}"></td>
-            <td th:text="${repair.phoneImei}"></td>
-            <td th:text="${repair.status}"></td>
-            <td th:text="${repair.dateOfRegistration}"></td>
-            <td th:text="${repair.endRepair}"></td>
+            <td class="text-white" th:text="${repair.phone.model}"></td>
+            <td class="text-white" th:text="${repair.problemDesc}"></td>
+            <td class="text-white" th:text="${repair.phoneImei}"></td>
+            <td class="text-white" th:text="${repair.status}"></td>
+            <td class="text-white" th:text="${repair.dateOfRegistration}"></td>
+            <td class="text-white" th:text="${repair.endRepair}"></td>
         </tr>
         </tbody>
     </table>
@@ -36,10 +36,10 @@
         <table class="table">
             <tbody>
             <tr th:each="part : ${parts}">
-                <td>
+                <td class="text-white">
                     <input type="checkbox" th:value="${part.id}" name="partId"/>
-                    <label th:text="${part.name}"></label>
-                    <label th:text="${part.price}"></label>
+                    <label class="text-white" th:text="${part.name}"></label>
+                    <label class="text-white" th:text="${part.price}"></label>
                 </td>
             </tr>
             <tr>

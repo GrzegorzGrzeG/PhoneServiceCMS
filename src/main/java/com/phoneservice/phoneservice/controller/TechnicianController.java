@@ -5,6 +5,7 @@ import com.phoneservice.phoneservice.entity.Repair;
 import com.phoneservice.phoneservice.entity.RepairStatus;
 import com.phoneservice.phoneservice.service.PartService;
 import com.phoneservice.phoneservice.service.RepairService;
+import jakarta.annotation.security.RolesAllowed;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +17,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Controller
-@PreAuthorize("hasRole('TECH')")
+@RolesAllowed("TECH")
 @RequestMapping("/tech")
 public class TechnicianController {
     private final RepairService repairService;

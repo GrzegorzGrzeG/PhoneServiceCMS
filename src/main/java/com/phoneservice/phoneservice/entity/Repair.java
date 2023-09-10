@@ -28,6 +28,7 @@ public class Repair {
     private Double sum;
     @Transient
     private Long phoneId;
+
     @ManyToOne
     @JoinColumn(name = "phone_id")
     private Phone phone;

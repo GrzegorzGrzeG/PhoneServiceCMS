@@ -7,6 +7,7 @@ import com.phoneservice.phoneservice.entity.UserRole;
 import com.phoneservice.phoneservice.service.PartService;
 import com.phoneservice.phoneservice.service.PhoneService;
 import com.phoneservice.phoneservice.service.UserService;
+import jakarta.annotation.security.RolesAllowed;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -16,8 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@PreAuthorize("hasRole('ADMIN')")
-@Secured("ADMIN")
+@RolesAllowed("ADMIN")
 @RequestMapping("/admin")
 public class AdminController {
     private final PhoneService phoneService;
@@ -29,6 +29,7 @@ public class AdminController {
         this.partService = partService;
         this.userService = userService;
     }
+
     @GetMapping("")
     public String mainMenu(Model model) {
         return "/html/admin_menu";

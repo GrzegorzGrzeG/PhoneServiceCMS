@@ -9,17 +9,17 @@
 <div class="container mt-5">
     <form th:action="@{/repair/new}" th:object="${newRepair}" method="post">
         <div class="form-group">
-            <label for="phoneId">Select model:</label>
+            <label for="phoneId" style="color: #fff;">Select model:</label>
             <select class="form-control" id="phoneId" th:field="*{phoneId}">
                 <option th:each="p : ${phones}" th:value="${p.id}" th:text="${p.model}" />
             </select>
         </div>
         <div class="form-group">
-            <label for="phoneImei">Phone IMEI:</label>
+            <label for="phoneImei" style="color: #fff;">Phone IMEI:</label>
             <input type="text" class="form-control" id="phoneImei" th:field="*{phoneImei}" />
         </div>
         <div class="form-group">
-            <label for="problemDesc">Problem:</label>
+            <label for="problemDesc" style="color: #fff;">Problem:</label>
             <input type="text" class="form-control" id="problemDesc" th:field="*{problemDesc}" />
         </div>
         <button type="submit" class="btn btn-primary">Register repair</button>
