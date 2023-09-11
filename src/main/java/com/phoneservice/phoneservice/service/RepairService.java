@@ -3,10 +3,8 @@ package com.phoneservice.phoneservice.service;
 import com.phoneservice.phoneservice.entity.Repair;
 import com.phoneservice.phoneservice.entity.RepairStatus;
 import com.phoneservice.phoneservice.entity.User;
-import com.phoneservice.phoneservice.repository.PartRepository;
 import com.phoneservice.phoneservice.repository.RepairRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

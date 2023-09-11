@@ -8,6 +8,7 @@ import com.phoneservice.phoneservice.service.PartService;
 import com.phoneservice.phoneservice.service.PhoneService;
 import com.phoneservice.phoneservice.service.UserService;
 import jakarta.annotation.security.RolesAllowed;
+import org.springframework.context.annotation.Role;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;

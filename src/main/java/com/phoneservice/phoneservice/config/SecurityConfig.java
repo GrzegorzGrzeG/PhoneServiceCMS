@@ -27,12 +27,10 @@ public class SecurityConfig {
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
 
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 
     @Bean
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -45,6 +43,7 @@ public class SecurityConfig {
                         .anyRequest().authenticated())
                 .formLogin(Customizer.withDefaults())
                 .userDetailsService(customUserDetailsService);
+
 
         return http.build();
     }
