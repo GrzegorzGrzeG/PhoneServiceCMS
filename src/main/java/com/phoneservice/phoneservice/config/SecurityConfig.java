@@ -6,6 +6,7 @@ import com.phoneservice.phoneservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -34,16 +35,22 @@ public class SecurityConfig {
 
     @Bean
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(request -> "/".equals(request.getRequestURI()) || "/register".equals(request.getRequestURI())).permitAll()
-                        .requestMatchers(request -> "/admin/**".equals(request.getRequestURI())).hasRole("ADMIN")
-                        .requestMatchers(request -> "/client/**".equals(request.getRequestURI())).hasRole("CLIENT")
-                        .requestMatchers(request -> "/tech/**".equals(request.getRequestURI())).hasRole("TECH")
-                        .anyRequest().authenticated())
-                .formLogin(Customizer.withDefaults())
-                .userDetailsService(customUserDetailsService);
-
+        http.authorizeHttpRequests(authorization ->
+                        authorization
+                                .shouldFilterAllDispatcherTypes(false)
+                                .requestMatchers(HttpMethod.GET, "/").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/register").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/register").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/admin/**").hasAuthority("ADMIN")
+                                .requestMatchers(HttpMethod.POST, "/admin/**").hasAuthority("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/client/**").hasAuthority("CLIENT")
+                                .requestMatchers(HttpMethod.POST, "/client/**").hasAuthority("CLIENT")
+                                .requestMatchers(HttpMethod.GET, "/tech/**").hasAuthority("TECH")
+                                .requestMatchers(HttpMethod.POST, "/tech/**").hasAuthority("TECH")
+                                .anyRequest()
+                                .authenticated())
+                .formLogin(Customizer.withDefaults());
 
         return http.build();
     }
