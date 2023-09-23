@@ -25,3 +25,4 @@ Aplikacja do zarządzania serwisem urządzeń mobilnych
 * Dodanie możliwości śledzenie przez niezarejestrowanych użytkowników napraw poprzez podanie numeru naprawy
 * Dodanie przycisków przechodzenia między stronami
 * Możliwość wylogowania się
+* Walidacja 
