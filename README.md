@@ -9,7 +9,7 @@ Aplikacja do zarządzania serwisem urządzeń mobilnych
 * Spring Boot 3.1.2
 * Spring Data JPA
 * Spring Security
-* Lombock
+* Lombok
 * Thymeleaf
 * Bootstrap
 
