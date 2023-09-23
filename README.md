@@ -23,3 +23,5 @@ Aplikacja do zarządzania serwisem urządzeń mobilnych
 * Statystyki napraw poszczególnych modeli
 * Dodanie innych producentów
 * Dodanie możliwości śledzenie przez niezarejestrowanych użytkowników napraw poprzez podanie numeru naprawy
+* Dodanie przycisków przechodzenia między stronami
+* Możliwość wylogowania się
